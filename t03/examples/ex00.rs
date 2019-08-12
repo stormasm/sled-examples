@@ -2,7 +2,7 @@ use sled::{Db, IVec};
 
 fn main() {
     let tree = Db::open("my_db").unwrap();
-    tree.insert(b"rick", b"v1".to_vec()).unwrap();
-    assert_eq!(tree.get(b"rick"), Ok(Some(IVec::from(b"v1"))));
+    tree.insert(b"rick", vec![1, 2, 3]).unwrap();
+    assert_eq!(tree.get(b"rick"), Ok(Some(IVec::from(vec![1, 2, 3]))));
     tree.flush().unwrap();
 }
