@@ -13,5 +13,11 @@ fn main() {
     tree.insert(k1, v1).unwrap();
     println!("{:?}", tree.get(k1));
 
+    let k2 = "pete";
+    let v2a = b"abc";
+    let v2 = v2a.to_vec();
+    tree.insert(k2, v2).unwrap();
+    println!("{:?}", tree.get(k2));
+
     tree.flush().unwrap();
 }
