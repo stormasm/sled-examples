@@ -8,5 +8,10 @@ fn main() {
     let result = tree.get(b"rick");
     println!("{:?}", result);
 
+    let k1 = "bill";
+    let v1 = b"abc def ghi".to_vec();
+    tree.insert(k1, v1).unwrap();
+    println!("{:?}", tree.get(k1));
+
     tree.flush().unwrap();
 }
