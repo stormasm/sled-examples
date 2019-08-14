@@ -13,6 +13,8 @@ fn main() {
     tree.insert(k1, v1).unwrap();
     println!("{:?}", tree.get(k1));
 
+    // Byte String Literals
+
     let k2 = "pete";
     let v2a = b"abc";
     let v2 = v2a.to_vec();
