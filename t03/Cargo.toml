@@ -3,5 +3,6 @@ name = "t03"
 version = "0.1.0"
 authors = ["Michael Angerman <stormasm@gmail.com>"]
 edition = "2018"
+
 [dependencies]
-sled = { git = "https://github.com/spacejam/sled" }
+sled = "0.29.2"
