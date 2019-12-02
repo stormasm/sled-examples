@@ -1,12 +1,12 @@
 //extern crate pagecache;
 extern crate sled;
 
-use sled::{ConfigBuilder, Db, Result};
+use sled::{Config, Result};
 
 fn basic() -> Result<()> {
-    let config = ConfigBuilder::new().temporary(true).build();
 
-    let db = Db::start(config)?;
+    let config = Config::new().temporary(true);
+    let db = config.open()?;
 
     let k = b"k".to_vec();
     let v1 = b"v1".to_vec();

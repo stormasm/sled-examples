@@ -22,6 +22,7 @@ fn main() {
     println!("{:?}", tree.get(k2));
 
     // as_bytes creates a Byte String Literal from a String
+    // which you can then call to_vec on...
 
     let k3 = "stu";
     let v3a = "xyz";
