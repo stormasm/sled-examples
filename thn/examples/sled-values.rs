@@ -36,7 +36,10 @@ impl<'a> SledToVec<'a> {
         let keys = tree.iter().keys();
 
         for key in keys {
-            println!("{:?}", from_utf8(&key.unwrap()));
+            // let xval = line.unwrap().clone();
+            // println!("{:?}", from_utf8(&key.unwrap()));
+
+            let xval = from_utf8(&key.unwrap());
         }
 
         tree.flush().unwrap();
