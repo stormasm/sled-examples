@@ -36,20 +36,13 @@ impl<'a> SledToVec<'a> {
         let keys = tree.iter().keys();
 
         for key in keys {
-            // let xval = line.unwrap().clone();
-            // println!("{:?}", from_utf8(&key.unwrap()));
-
-            let xval = from_utf8(&key.unwrap());
+            let mykey = key.clone().unwrap();
+            let xval = from_utf8(&mykey);
+            println!("{:?}", xval);
         }
 
         tree.flush().unwrap();
         Ok(())
-        /*
-                for i in 0..self.key.len() {
-                    // println!("{} {}", self.key[i], self.value[i]);
-                    let _x = SledToVec::write_json_to_sled(self.key[i].to_string(), self.value[i].clone());
-                }
-        */
     }
 }
 
