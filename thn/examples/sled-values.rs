@@ -4,15 +4,15 @@ use std::env;
 use std::process;
 use std::string::String;
 
-use std::fs::File;
-use std::io::BufReader;
+// use std::fs::File;
+// use std::io::BufReader;
 
 use sled::Db;
-use std::convert::TryInto;
-use std::io::{BufRead, Error};
+// use std::convert::TryInto;
+use std::io::{Error};
 
 use std::str::from_utf8;
-use std::str::FromStr;
+// use std::str::{Frfrom_utf8};
 
 #[derive(Debug)]
 struct SledToVec<'a> {
@@ -21,10 +21,11 @@ struct SledToVec<'a> {
 }
 
 impl<'a> SledToVec<'a> {
+/*
     fn is_even(num: u32) -> bool {
         (num) & 1 == 0
     }
-
+*/
     fn write_json_to_sled(key: String, data: String) -> Result<(), Error> {
         let tree = Db::open("sledb_hn").unwrap();
         let _x = tree.insert(key, data.as_str().as_bytes());
