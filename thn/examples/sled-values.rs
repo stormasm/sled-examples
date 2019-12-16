@@ -30,7 +30,7 @@ impl<'a> SledToVec<'a> {
             let ckey = key.clone().unwrap();
             let xkey = from_utf8(&ckey).unwrap();
 
-//            let n: u32 = xkey.parse().unwrap();
+            //            let n: u32 = xkey.parse().unwrap();
             self.key.push(xkey.to_string());
             // println!("{:?}", n);
         }
@@ -42,8 +42,8 @@ impl<'a> SledToVec<'a> {
             println!("{}", self.key[i]);
             println!("{}", x);
             // assert_eq!(tree.get(b"rick"), Ok(Some(IVec::from(vec![1, 2, 3]))));
-            let y = tree.get(x);
-            println!("{:?}", y);
+            let y = tree.get(x).unwrap().unwrap();
+            println!("{:?}", from_utf8(&y));
         }
 
         tree.flush().unwrap();
