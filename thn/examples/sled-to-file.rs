@@ -41,10 +41,19 @@ impl<'a> SledToVec<'a> {
 
         for i in 0..self.key.len() {
             let x = &self.key[i];
-            println!("{}", x);
+            // println!("{}", x);
             // write!(output, "{}", x)?;
             write!(output, "{}", x)?;
             write!(output, "{}", "\n")?;
+
+            let y = tree.get(x).unwrap().unwrap();
+            // println!("{:?}", from_utf8(&y).unwrap());
+            write!(output, "{}", from_utf8(&y).unwrap())?;
+            write!(output, "{}", "\n")?;
+
+
+
+
 
             // let y = tree.get(x).unwrap().unwrap();
             // println!("{:?}", from_utf8(&y));
