@@ -1,7 +1,6 @@
 // https://doc.rust-lang.org/rust-by-example/scope/lifetime/methods.html
 
 use std::env;
-//use std::io::Error;
 use std::process;
 use std::str::from_utf8;
 use std::string::String;
@@ -42,7 +41,6 @@ impl<'a> SledToVec<'a> {
         for i in 0..self.key.len() {
             let x = &self.key[i];
             // println!("{}", x);
-            // write!(output, "{}", x)?;
             write!(output, "{}", x)?;
             write!(output, "{}", "\n")?;
 
@@ -50,22 +48,6 @@ impl<'a> SledToVec<'a> {
             // println!("{:?}", from_utf8(&y).unwrap());
             write!(output, "{}", from_utf8(&y).unwrap())?;
             write!(output, "{}", "\n")?;
-
-
-
-
-
-            // let y = tree.get(x).unwrap().unwrap();
-            // println!("{:?}", from_utf8(&y));
-
-            // println!("{:?}", from_utf8(&tree.get(x).unwrap().unwrap()));
-
-/*
-            write!(output, "{}", key.to_string())?;
-            write!(output, "{}", "\n")?;
-            write!(output, "{}", json.to_string())?;
-            write!(output, "{}", "\n")?;
-*/
         }
 
         output.sync_all()?;
