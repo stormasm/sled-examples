@@ -35,7 +35,7 @@ impl<'a> SledToVec<'a> {
             self.key.push(xkey.to_string());
         }
 
-        let path = "./linesmin-sled.txt";
+        let path = "linesmin-sled.txt";
         let mut output = File::create(path)?;
 
         for i in 0..self.key.len() {
