@@ -10,7 +10,7 @@ use sled::Db;
 
 #[derive(Debug)]
 struct SledToVec<'a> {
-    key: &'a mut Vec<u32>,
+    key: &'a mut Vec<String>,
     value: &'a mut Vec<String>,
 }
 
@@ -29,9 +29,21 @@ impl<'a> SledToVec<'a> {
         for key in keys {
             let ckey = key.clone().unwrap();
             let xkey = from_utf8(&ckey).unwrap();
-            let n: u32 = xkey.parse().unwrap();
-            self.key.push(n);
-            println!("{:?}", n);
+
+//            let n: u32 = xkey.parse().unwrap();
+            self.key.push(xkey.to_string());
+            // println!("{:?}", n);
+        }
+
+        for i in 0..self.key.len() {
+            // println!("{} {}", self.key[i], self.value[i]);
+            // let _x = FileToVec::write_json_to_sled(self.key[i].to_string(), self.value[i].clone());
+            let x = &self.key[i];
+            println!("{}", self.key[i]);
+            println!("{}", x);
+            // assert_eq!(tree.get(b"rick"), Ok(Some(IVec::from(vec![1, 2, 3]))));
+            let y = tree.get(x);
+            println!("{:?}", y);
         }
 
         tree.flush().unwrap();
