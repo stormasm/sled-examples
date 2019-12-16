@@ -12,6 +12,7 @@ use std::convert::TryInto;
 use std::io::{BufRead, Error};
 
 use std::str::from_utf8;
+use std::str::FromStr;
 
 #[derive(Debug)]
 struct SledToVec<'a> {
@@ -37,9 +38,15 @@ impl<'a> SledToVec<'a> {
 
         for key in keys {
             let ckey = key.clone().unwrap();
-            let xkey = from_utf8(&ckey);
-            // self.key.push(xkey);
-            println!("{:?}", xkey);
+            let xkey = from_utf8(&ckey).unwrap();
+            //let () = from_utf8(&ckey).unwrap();
+
+            //let n: u32 = from_str(xkey).unwrap();
+
+            let n: u32 = xkey.parse().unwrap();
+
+            self.key.push(n);
+            println!("{:?}", n);
         }
 
         tree.flush().unwrap();
