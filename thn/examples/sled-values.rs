@@ -15,6 +15,7 @@ struct SledToVec<'a> {
 }
 
 impl<'a> SledToVec<'a> {
+    #[allow(dead_code)]
     fn write_json_to_sled(key: String, data: String) -> Result<(), Error> {
         let tree = Db::open("sledb_hn").unwrap();
         let _x = tree.insert(key, data.as_str().as_bytes());
@@ -35,8 +36,11 @@ impl<'a> SledToVec<'a> {
         for i in 0..self.key.len() {
             let x = &self.key[i];
             println!("{}", x);
-            let y = tree.get(x).unwrap().unwrap();
-            println!("{:?}", from_utf8(&y));
+
+            //          let y = tree.get(x).unwrap().unwrap();
+            //          println!("{:?}", from_utf8(&y));
+
+            println!("{:?}", from_utf8(&tree.get(x).unwrap().unwrap()));
         }
 
         tree.flush().unwrap();
