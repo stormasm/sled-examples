@@ -7,7 +7,6 @@ use std::string::String;
 use std::fs::File;
 use std::io::BufReader;
 
-use sled::Db;
 use std::convert::TryInto;
 use std::io::{BufRead, Error};
 
@@ -23,7 +22,7 @@ impl<'a> FileToVec<'a> {
     }
 
     fn write_json_to_sled(key: String, data: String) -> Result<(), Error> {
-        let tree = Db::open("sledb_hn").unwrap();
+        let tree = sled::open("sledb_hn").unwrap();
         let _x = tree.insert(key, data.as_str().as_bytes());
         tree.flush().unwrap();
         Ok(())
