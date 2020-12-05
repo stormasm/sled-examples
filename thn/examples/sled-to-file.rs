@@ -8,8 +8,6 @@ use std::string::String;
 use std::fs::File;
 use std::io::{Error, Write};
 
-use sled::Db;
-
 #[derive(Debug)]
 struct SledToVec<'a> {
     key: &'a mut Vec<String>,
@@ -18,7 +16,7 @@ struct SledToVec<'a> {
 
 impl<'a> SledToVec<'a> {
     fn read_sled_write_file(&mut self, dbname: String) -> Result<(), Error> {
-        let tree = Db::open(dbname).unwrap();
+        let tree = sled::open(dbname).unwrap();
         let keys = tree.iter().keys();
 
         for key in keys {
