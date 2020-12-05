@@ -6,8 +6,6 @@ use std::process;
 use std::str::from_utf8;
 use std::string::String;
 
-use sled::Db;
-
 #[derive(Debug)]
 struct SledToVec<'a> {
     key: &'a mut Vec<String>,
@@ -17,14 +15,14 @@ struct SledToVec<'a> {
 impl<'a> SledToVec<'a> {
     #[allow(dead_code)]
     fn write_json_to_sled(key: String, data: String) -> Result<(), Error> {
-        let tree = Db::open("sledb_hn").unwrap();
+        let tree = sled::open("sledb_hn").unwrap();
         let _x = tree.insert(key, data.as_str().as_bytes());
         tree.flush().unwrap();
         Ok(())
     }
 
     fn readdb(&mut self, dbname: String) -> Result<(), Error> {
-        let tree = Db::open(dbname).unwrap();
+        let tree = sled::open(dbname).unwrap();
         let keys = tree.iter().keys();
 
         for key in keys {
