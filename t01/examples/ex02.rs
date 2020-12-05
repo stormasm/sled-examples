@@ -1,6 +1,3 @@
-//extern crate pagecache;
-extern crate sled;
-
 use sled::{Config, Result};
 
 fn basic() -> Result<()> {

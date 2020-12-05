@@ -1,7 +1,7 @@
-use sled::{Db, IVec};
+use sled::{IVec};
 
 fn main() {
-    let tree = Db::open("my_db").unwrap();
+    let tree = sled::open("my_db").unwrap();
     tree.insert(b"rick", b"123 456 789".to_vec()).unwrap();
     assert_eq!(tree.get(b"rick"), Ok(Some(IVec::from(b"123 456 789"))));
 
