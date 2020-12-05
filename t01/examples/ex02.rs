@@ -1,7 +1,6 @@
 use sled::{Config, Result};
 
 fn basic() -> Result<()> {
-
     let config = Config::new().temporary(true);
     let db = config.open()?;
 

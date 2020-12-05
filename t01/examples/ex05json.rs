@@ -1,4 +1,4 @@
-use sled::{IVec};
+use sled::IVec;
 
 fn main() {
     let tree = sled::open("my_db").unwrap();
