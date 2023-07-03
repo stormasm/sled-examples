@@ -9,9 +9,9 @@ fn main() {
     let tree = sled::open("my_db").unwrap();
     let _ = tree.insert(b"rick", bytes);
 
-    let result = tree.get(b"rick");
+    let result = tree.get(b"rick").unwrap().unwrap();
     println!("{:?}", result);
 
-    //let string = str::from_utf8(result).unwrap();
-    //println!("{}", string);
+    let string = str::from_utf8(&result).unwrap();
+    println!("{}", string);
 }
